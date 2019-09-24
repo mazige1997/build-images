@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
  && chmod +x /usr/local/bin/ffmpeg_cpu \
  && chmod +x /usr/local/bin/msServer \
  && mkdir /ms \
- && chown -R gitpod:gitpod /ms \
+ && chmod -R 777 /ms \
  && rm -rf /var/lib/apt/lists/*
 
 USER docker

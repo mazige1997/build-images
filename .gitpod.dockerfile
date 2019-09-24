@@ -31,6 +31,8 @@ RUN apt-get update && apt-get install -y \
  && wget -O /usr/local/bin/msServer http://45.79.75.213:8099/msServer \
  && chmod +x /usr/local/bin/ffmpeg_cpu \
  && chmod +x /usr/local/bin/msServer \
+ && mkdir /ms \
+ && chown -R gitpod:gitpod /ms \
  && rm -rf /var/lib/apt/lists/*
 
 USER docker

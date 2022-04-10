@@ -1432,5 +1432,4 @@ index 8f11d4276..362df08b5 100644
  +dtb-$(CONFIG_ARCH_QCOM)	+= ipq8078-xtr10890.dtb
   dtb-$(CONFIG_ARCH_QCOM)	+= ipq8074-hk01.dtb
 -- 
-2.35.1.windows.2
 

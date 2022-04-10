@@ -12,7 +12,7 @@ index 416a03413..36591fa16 100644
  	p2w_r619ac \
  	qnap_301w \
  	qxwlan_e2600ac \
-+   redmi_ax6 \
++ redmi_ax6 \
 +	xiaomi_ax3600 \
 +	xiaomi_ax9000 \
  	zte_mf263 \
@@ -667,7 +667,7 @@ index cbd229347..e80c57408 100644
  	qnap,301w)
  		ucidef_set_interfaces_lan_wan "eth0 eth1 eth2 eth3 eth4" "eth5"
  		;;
-+    redmi,ax6|\
++ redmi,ax6|\
 +	xiaomi,ax3600)
 +		ucidef_set_interfaces_lan_wan "eth1 eth2 eth3" "eth0"
 +		;;
@@ -708,13 +708,13 @@ index 4a91b83d8..716724220 100644
  	qnap,301w)
  		caldata_extract "0:art" 0x1000 0x20000
  		;;
-+   redmi,ax6)
++ redmi,ax6)
 +		caldata_extract "0:art" 0x1000 0x20000
 +		;;
-+   xiaomi,ax3600)
++ xiaomi,ax3600)
 +		caldata_extract "0:art" 0x1000 0x20000
 +		;;
-+   xiaomi,ax9000)
++ xiaomi,ax9000)
 +		caldata_extract "0:art" 0x1000 0x20000
 +		;;
  	zte,mf269)
@@ -728,7 +728,7 @@ index a164a73de..3541aa876 100644
  		rootfsname="rootfs"
  		mmc_do_upgrade "$1"
  		;;
-+   redmi,ax6|\
++ redmi,ax6|\
 +	xiaomi,ax3600|\
 +	xiaomi,ax9000)
 +		part_num="$(fw_printenv -n flag_boot_rootfs)"

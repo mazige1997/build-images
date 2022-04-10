@@ -3,32 +3,6 @@ From: yujiemml <3393812@qq.com>
 Date: Sun, 10 Apr 2022 09:16:22 +0800
 Subject: [PATCH 2/2] add xiaomi devices support
 
----
- package/firmware/ipq-wifi/Makefile            |   6 +
- .../firmware/ipq-wifi/board-redmi_ax6.ipq8074 | Bin 0 -> 131172 bytes
- .../ipq-wifi/board-xiaomi_ax3600.ipq8074      | Bin 0 -> 131176 bytes
- .../ipq-wifi/board-xiaomi_ax3600.qca9889      | Bin 0 -> 2260 bytes
- .../ipq-wifi/board-xiaomi_ax9000.ipq8074      | Bin 0 -> 131176 bytes
- .../ipq807x/base-files/etc/board.d/01_leds    |   4 +
- .../ipq807x/base-files/etc/board.d/02_network |   4 +
- .../etc/hotplug.d/firmware/11-ath10k-caldata  |  20 +
- .../etc/hotplug.d/firmware/11-ath11k-caldata  |   9 +
- .../base-files/lib/upgrade/platform.sh        |  28 +
- .../arm64/boot/dts/qcom/ipq8071-ax3600.dts    |  71 +++
- .../arm64/boot/dts/qcom/ipq8071-ax3600.dtsi   | 498 ++++++++++++++++++
- .../arch/arm64/boot/dts/qcom/ipq8071-ax6.dts  |  39 ++
- target/linux/ipq807x/image/generic.mk         |  22 +
- .../900-arm64-dts-add-OpenWrt-DTS-files.patch |   2 +
- 15 files changed, 703 insertions(+)
- create mode 100644 package/firmware/ipq-wifi/board-redmi_ax6.ipq8074
- create mode 100644 package/firmware/ipq-wifi/board-xiaomi_ax3600.ipq8074
- create mode 100644 package/firmware/ipq-wifi/board-xiaomi_ax3600.qca9889
- create mode 100644 package/firmware/ipq-wifi/board-xiaomi_ax9000.ipq8074
- create mode 100644 target/linux/ipq807x/base-files/etc/hotplug.d/firmware/11-ath10k-caldata
- create mode 100644 target/linux/ipq807x/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600.dts
- create mode 100644 target/linux/ipq807x/files/arch/arm64/boot/dts/qcom/ipq8071-ax3600.dtsi
- create mode 100644 target/linux/ipq807x/files/arch/arm64/boot/dts/qcom/ipq8071-ax6.dts
-
 diff --git package/firmware/ipq-wifi/Makefile package/firmware/ipq-wifi/Makefile
 index 416a03413..36591fa16 100644
 --- package/firmware/ipq-wifi/Makefile
@@ -37,7 +11,7 @@ index 416a03413..36591fa16 100644
  	p2w_r619ac \
  	qnap_301w \
  	qxwlan_e2600ac \
-+   redmi_ax6 \
++ redmi_ax6 \
 +	xiaomi_ax3600 \
 +	xiaomi_ax9000 \
  	zte_mf263 \
@@ -692,7 +666,7 @@ index cbd229347..e80c57408 100644
  	qnap,301w)
  		ucidef_set_interfaces_lan_wan "eth0 eth1 eth2 eth3 eth4" "eth5"
  		;;
-+   redmi,ax6|\
++ redmi,ax6|\
 +	xiaomi,ax3600)
 +		ucidef_set_interfaces_lan_wan "eth1 eth2 eth3" "eth0"
 +		;;
@@ -733,13 +707,13 @@ index 4a91b83d8..716724220 100644
  	qnap,301w)
  		caldata_extract "0:art" 0x1000 0x20000
  		;;
-+   redmi,ax6)
++  redmi,ax6)
 +		caldata_extract "0:art" 0x1000 0x20000
 +		;;
-+   xiaomi,ax3600)
++  xiaomi,ax3600)
 +		caldata_extract "0:art" 0x1000 0x20000
 +		;;
-+   xiaomi,ax9000)
++  xiaomi,ax9000)
 +		caldata_extract "0:art" 0x1000 0x20000
 +		;;
  	zte,mf269)
@@ -753,7 +727,7 @@ index a164a73de..3541aa876 100644
  		rootfsname="rootfs"
  		mmc_do_upgrade "$1"
  		;;
-+   redmi,ax6|\
++ redmi,ax6|\
 +	xiaomi,ax3600|\
 +	xiaomi,ax9000)
 +		part_num="$(fw_printenv -n flag_boot_rootfs)"

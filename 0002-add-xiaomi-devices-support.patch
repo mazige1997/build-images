@@ -667,10 +667,10 @@ index cbd229347..e80c57408 100644
  	qnap,301w)
  		ucidef_set_interfaces_lan_wan "eth0 eth1 eth2 eth3 eth4" "eth5"
  		;;
-+	xiaomi,ax3600|\
++ xiaomi,ax3600|\
 + redmi,ax6)
-+		ucidef_set_interfaces_lan_wan "eth1 eth2 eth3" "eth0"
-+		;;
+   ucidef_set_led_netdev "wan" "WAN" "blue:network" "eth0"
+   ;;
  	zte,mf269)
  		ucidef_set_interfaces_lan_wan "eth0" "eth1"
  		;;
@@ -709,14 +709,14 @@ index 4a91b83d8..716724220 100644
  		caldata_extract "0:art" 0x1000 0x20000
  		;;
 + redmi,ax6)
-+		caldata_extract "0:art" 0x1000 0x20000
-+		;;
+ 		caldata_extract "0:art" 0x1000 0x20000
+ 		;;
 + xiaomi,ax3600)
-+		caldata_extract "0:art" 0x1000 0x20000
-+		;;
+ 		caldata_extract "0:art" 0x1000 0x20000
+ 		;;
 + xiaomi,ax9000)
-+		caldata_extract "0:art" 0x1000 0x20000
-+		;;
+ 		caldata_extract "0:art" 0x1000 0x20000
+ 		;;
  	zte,mf269)
  		caldata_extract "0:ART" 0x1000 0x20000
  		;;

@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
  && apt-get dist-upgrade -y \
- && apt-get install -y locales sudo \
+ && apt-get install -y locales sudo adduser \
  && rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8 \
